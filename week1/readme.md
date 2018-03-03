@@ -1,1 +1,3 @@
 TODO: Reflect on what you learned this week and what is still unclear.
+The first week journal
+Today is thired March in the year of 2018. This is the first weekend during my college life. In this week I knew a lot of new friends, they came from many different countries and are all very kindful. And the professor full of knowledge and common touch. UNSW just like a big family. I have a good time here. But on the opposite, my English is not very well, so there are also some communication barriers. So in my opinon I need to exercise more. I will work harder and try my best. 
