@@ -287,3 +287,7 @@ def theTests(path_to_code_to_check="."):
 
 if __name__ == "__main__":
     theTests()  # no arg, runs tests on local code
+
+name = input('f')
+x = name
+print(x*2)
