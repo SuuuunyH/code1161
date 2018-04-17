@@ -18,7 +18,9 @@ def greet(name="Towering Timmy"):
     return a string of "Hello" and the name argument.
     E.g. if given as "Towering Timmy" it should return "Hello Towering Timmy"
     """
-    pass
+    qwe = "Hello "
+    qwe = qwe + name
+    return qwe
 
 
 def three_counter(input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
@@ -27,7 +29,11 @@ def three_counter(input_list=[1, 4, 3, 5, 7, 1, 3, 2, 3, 3, 5, 3, 7]):
     Return an integer.
     TIP: the test will use a different input_list, so don't just return 5
     """
-    pass
+    qwe = 0
+    for i in input_list:
+        if i == 3:
+            qwe = qwe + 1
+    return qwe
 
 
 def fizz_buzz():
@@ -45,7 +51,17 @@ def fizz_buzz():
     if it is. E.g. [1, 2, "Fizz", 4, "Buzz", 6, 7, ...]
     """
     fizzBuzzList = []
-    # your code here
+    for i in range(1,101):
+        if i%3 == 0:
+            if i%5 ==0:
+                fizzBuzzList.append("FizzBuzz")
+            else:
+                fizzBuzzList.append("Fizz")
+        else:
+            if i%5 == 0:
+                fizzBuzzList.append("Buzz")
+            else:
+                fizzBuzzList.append(i)
     return fizzBuzzList
 
 
@@ -56,7 +72,11 @@ def put_behind_bars(input_string="very naughty boy"):
     e.g. "very naughty boy" should return "|v|e|r|y| |n|a|u|g|h|t|y| |b|o|y|"
     TIP: make sure that you have a pipe on both ends of the string.
     """
-    pass
+    qwe = ""
+    for i in input_string :
+        qwe = qwe+ "|" + i
+    qwe = qwe + "|"
+    return qwe
 
 
 def pet_filter(letter="a"):
@@ -69,8 +89,13 @@ def pet_filter(letter="a"):
             "bali cattle", "gayal", "turkey", "goldfish", "rabbit", "koi",
             "canary", "society finch", "fancy mouse", "siamese fighting fish",
             "fancy rat and lab rat", "mink", "red fox", "hedgehog", "guppy"]
-    pass
-
+    qwe = []
+    for i in pets:
+        for j in i:
+            if j == letter:
+                qwe.append(i)
+                break
+    return qwe
 
 def best_letter_for_pets():
     """Return the letter that is present at least once in the most pet names.
@@ -78,9 +103,18 @@ def best_letter_for_pets():
     Reusing the pet_filter, find the letter that gives the longest list of pets
     TIP: return just a letter, not the list of animals.
     """
-    import string
-    the_alphabet = string.lowercase
-    pass
+#    import string
+#    the_alphabet = lowercase
+    the_alphabet ="abcdefghijklmnopqrstuvwxyz"
+    maxlen = 0;
+    maxlett = '1';
+    for i in the_alphabet:
+        tmp = pet_filter(i)
+        tmpl = len(tmp)
+        if tmpl> maxlen:
+            maxlen = tmpl
+            maxlett = i
+    return maxlett
 
 
 def make_filler_text_dictionary():
@@ -98,7 +132,13 @@ def make_filler_text_dictionary():
     TIP: you'll need the requests library
     """
     import requests
-    pass
+    dic = {}
+    for i in range(3,8):
+    	 l = requests.get("http://www.setgetgo.com/randomword/?len=" + str(i))
+    	 # need decode
+    	 dic[i] = l
+
+    return dic
 
 
 def random_filler_text(number_of_words=200):
@@ -114,7 +154,13 @@ def random_filler_text(number_of_words=200):
            capital letter and end with a full stop.
     """
     import random
-    pass
+    dic = make_filler_text_dictionary()
+    text = ''
+    for _ in range(number_of_words):
+    	 length = int(random.random()*4)+3
+    	 idx = int(random.random()*2)
+    	 text += dic[length][idx]
+    return text
 
 
 def fast_filler(number_of_words=200):
@@ -129,7 +175,24 @@ def fast_filler(number_of_words=200):
     into and out of the file. Be careful when you read it back in, it'll
     convert integer keys to strings.
     """
-    pass
+    import os
+    import json
+    import random
+    dic={}
+    if os.path.exists(dict_racey.words):
+        json_file = open("./dict_racey.words",'r',encoding='utf-8')
+        model=json.load(json_file)
+    else:
+        dic = make_filler_text_dictionary()
+        json_file = open("./dict_racey.words",'w',encoding='utf-8')
+        json.dump(dic,json_file,ensure_ascii=False)
+    text = ''
+    for _ in range(number_of_words):
+        length = str(random.random()*4+3)
+        idx = int(random.random()*2)
+        text += dic[length][idx]
+    return text
+
 
 
 if __name__ == '__main__':
